@@ -282,18 +282,17 @@ html, body {
   font-size: 12px; }
 
 html {
-  font-size: 15.625vw; }
+  font-size: 16vw; }
 
 .page {
   height: 100%;
   overflow: hidden;
-  background-color: #f3f4f6; }
+  background: #f3f4f6; }
 
-/*头部*/
 .header {
-  height: 43px;
-  line-height: 43px;
-  background-color: #b11f1f;
+  height: 44px;
+  line-height: 44px;
+  background: #b11f1f;
   text-align: center;
   color: #fff;
   font-size: 18px; }
@@ -313,12 +312,11 @@ html {
   flex: 1;
   width: .1px; }
 
-/*二级头部*/
 .sub-header {
-  top: 43px;
+  top: 44px;
   height: 30px;
   line-height: 30px;
-  background-color: #9a9fa5; }
+  background: #9a9fa5; }
   .sub-header ul {
     height: 100%;
     white-space: nowrap; }
@@ -327,36 +325,33 @@ html {
     color: #fff;
     padding: 0 10px; }
 
-/*内容*/
 .content {
-  top: 43px;
+  top: 44px;
   bottom: 0; }
 
 .has-sub-header {
-  top: 73px; }
+  top: 74px; }
 
 .has-footer {
   bottom: 48px; }
 
-/*iscroll*/
 .wrapper {
   height: 100%;
   overflow: hidden; }
 
 .scroller {
-  background-color: #f3f4f6; }
+  background: #f3f4f6; }
 
 .down-text {
   line-height: 50px;
   text-align: center; }
 
-/*底部*/
 .footer {
   top: auto;
   bottom: 0;
   height: 48px;
   line-height: 48px;
-  background-color: #484850; }
+  background: #484850; }
   .footer .footer-list {
     height: 100%; }
     .footer .footer-list li {
@@ -366,21 +361,20 @@ html {
     .footer .footer-list a {
       color: #fff; }
 
-/*loading*/
 #loading {
   bottom: 0;
   display: none;
   padding: 15px;
-  background-color: rgba(0, 0, 0, 0.1); }
+  background: rgba(0, 0, 0, 0.2); }
   #loading .loading-img {
     width: 62px;
     height: 62px;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 50px;
+    top: 50px;
     margin: -31px 0 0 -31px;
     padding: 15px;
-    background-color: rgba(0, 0, 0, 0.3); }
+    background: rgba(0, 0, 0, 0.4); }
     #loading .loading-img img {
       width: 32px;
       height: 32px; }

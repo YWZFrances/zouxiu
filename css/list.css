@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/*作用不很多*/
+/*按钮的字体颜色*/
+/*普通字体颜色*/
+/*变亮的字体颜色*/
+/*金额的颜色*/
+#list-page .content {
+  overflow: hidden; }
+
+#list-page .class-list {
+  overflow-x: auto;
+  overflow-y: hidden; }
+
+.pro-list {
+  overflow: hidden; }
+
+.pro-item {
+  float: left;
+  width: 3.2rem;
+  padding: 0.2rem 0.37rem; }
+  .pro-item .pic {
+    width: 2.44rem;
+    box-shadow: 0 0 1px #000;
+    display: block;
+    padding: 0.06rem; }
+  .pro-item img {
+    width: 2.32rem;
+    height: 2.32rem; }
+  .pro-item .pro-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block; }
+  .pro-item p {
+    line-height: 1.8; }
+  .pro-item .price {
+    overflow: hidden; }
+  .pro-item em {
+    float: left;
+    color: #e22;
+    font-size: 16px; }
+  .pro-item del {
+    float: right; }
