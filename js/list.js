@@ -44,23 +44,92 @@ window.onload = function(){
 			//分类的内容
 			var str = ""
 			for(var i=0;i<data.length;i++){
-              str+='<li class="iconfont" data-id="'+data[i].classID+'">'+data[i].icon+'</li>'
+              str+='<li class="iconfont" data-id="'+data[i].classID+'">'+data[i].className+'</li>'
 			}
+			
 			this.classList.html(str)
 		}.bind(this),"json")
 		
 	},
 	
 	
-	addData:function(){},
+	addData:function(reload){
+		
+		if(reload){
+			//如果需要刷新，让页面归零
+			this.page = 0
+		}
+		//loading show
+		$("#loading").show()
+		//通过jsonp添加数据
+		var sendData = {"classID":this.classID,"pageCode":this.page++,"linenumber":6};
+		$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",sendData,function(data){
+			console.log(data);
+			var str = "";
+			for(var i=0;i<data.length;i++){
+				str+='<li class="pro-item">' +
+                        '<a href="detail.html?goodsID='+data[i].goodsID+'" class="pic"><img src="'+data[i].goodsListImg+'"></a>' +
+                        '<p class="pro-name">'+data[i].goodsName+'</p>' +
+                        '<p class="price"><em>￥'+data[i].price+'</em> <del>￥888</del></p>' +
+                    '</li>'
+			}
+			if(reload){
+				//刷新的时候，直接用当前最新的数据，覆盖之前的内容
+				this.list.html(str)
+			}else{
+				//加载的时候，需要跟之前的内容拼接在一起
+				this.list.html(this.list.html()+str)
+			}
+			
+			//更新滚动条
+			this.myScroll.refresh()
+			//加载完成 加载动画消失
+			$("#loading").fadeOut();
+		}.bind(this))
+		
+		
+	},
 	
-	bindEvent:function(){}
 	
 	
 	
-	
-	
-	
+	bindEvent:function(){
+		//给页面元素绑定事件
+		var that = this;
+		this.myScroll.on("scroll",function(){
+			if(that.y>50){
+//				console.log("刷新");
+				that.downText.html("松开刷新")
+				//that.canRolad是能不能刷新页面
+				that.canReload = true
+				
+			}
+		});
+		this.myScroll.on("scrollEnd",function(){
+			//当滚动结束的时候判断是否到底部
+			if(this.y-this.maxScrollY<50){
+//				console.log("加载更多");
+				listPage.addData()
+			}
+			if(that.canReload){
+				//如果需要刷新，就调用刷新的方法
+				listPage.addData(true)
+				//刷新以后，需要把下拉的提示重置
+				that.downText.html("下拉刷新")
+				that.canReload = false
+			}
+		});
+		
+		//切换商品分类
+		this.classList.on("click","li",function(){
+			//d点击分类的id
+			console.log($(this).attr("data-id"))
+			that.classID = $(this).attr("data-id");
+			//重新给页面添加数据
+			that.addData(true)
+		});
+		
+	}
 	
 };
 //让页面初始化
