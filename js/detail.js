@@ -1,9 +1,13 @@
 
-//$(function(){
-//	$(".add-cart").on("click",function(){
-//			console.log(1)
-//		})
-//})
+$(function(){
+		$("#detail-page .add-cart").on("click",function () {
+			console.log(1111)
+            var sendData = {"userID":"lining","goodsID":detailPage.goodsID,"number":1};
+            $.get("http://datainfo.duapp.com/shopdata/updatecar.php",sendData,function (data) {
+                console.log(data)
+            },"json")
+        })
+})
 
 var detailPage = {
 	goodsID:fnBase.request("goodsID"),
